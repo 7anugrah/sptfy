@@ -11,8 +11,8 @@ import csv
 
 # Fungsi untuk mengambil token dari Spotify API
 def getToken():
-    client_id = st.text_input("Enter Client ID")
-    client_secret = st.text_input("Enter Client Secret")
+    client_id = st.text_input("Enter Client ID", key="client_id_input")  # Tambahkan key
+    client_secret = st.text_input("Enter Client Secret", key="client_secret_input")  # Tambahkan key
     auth_url = "https://accounts.spotify.com/api/token"
     auth_header = {
         'Authorization': 'Basic ' + (client_id + ":" + client_secret).encode('ascii').decode('utf-8')}
@@ -129,9 +129,9 @@ def dataProcessing():
 def main():
     st.write("# Spotify Playlist Clustering")
     
-    client_id = st.text_input("Enter Client ID")
-    client_secret = st.text_input("Enter Client Secret")
-    playlist_id = st.text_input("Enter Playlist ID")
+    client_id = st.text_input("Enter Client ID", key="client_id")  # Tambahkan key
+    client_secret = st.text_input("Enter Client Secret", key="client_secret")  # Tambahkan key
+    playlist_id = st.text_input("Enter Playlist ID", key="playlist_id")  # Tambahkan key
 
     if st.button('Create Dataset!'):
         token = getToken()
